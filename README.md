@@ -2,7 +2,7 @@
 
 **Project:** Online Cases Store
 
-**Authors:** Bussygin Danila SE-2414, Yessen Zhumagali SE-2419
+**Authors:** Bussygin Danila SE-2414
 
 This repository contains a complete PRR-oriented SRE setup with:
 
@@ -58,7 +58,7 @@ Online Cases Store is an e-commerce web application for phone, laptop, and table
 
 - Defined SLIs and SLOs
 - Kubernetes Horizontal Pod Autoscaler
-- Locust load test сценарий for traffic spikes
+- Locust load test for traffic spikes
 - PromQL queries for dashboarding and review
 
 ---

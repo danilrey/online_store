@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Cases Store - Premium Phone & Laptop Cases</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Cases Store</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/" class="active">Home</a></li>
+                <li><a href="/products.html">Products</a></li>
+                <li><a href="/cart.html">Cart <span id="cart-count" class="badge">0</span></a></li>
+                <li><a href="/dashboard.html" id="dashboard-link" style="display: none;">Dashboard</a></li>
+                <li><a href="/admin.html" id="admin-link" style="display: none;">Admin</a></li>
+                <li id="user-name-display" style="display: none; color: var(--dark-color); font-weight: 700; font-size: 1.1em;"></li>
+                <li><a href="/login.html" id="auth-link">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Premium Cases for Your Devices</h2>
+                <p>Protect your devices with our high-quality, stylish cases</p>
+                <a href="/products.html" class="btn btn-primary btn-lg">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Products Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Products</h2>
+                <p>Check out our most popular cases</p>
+            </div>
+
+            <div id="featured-products" class="product-grid">
+                <!-- Products will be loaded here -->
+                <div class="loading">Loading products...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <div class="section-header">
+                <h2>Shop by Category</h2>
+            </div>
+
+            <div class="category-grid">
+                <a href="/products.html?category=phone-case" class="category-card">
+                    <div class="category-icon">PHONE</div>
+                    <p>Protect your smartphone</p>
+                </a>
+
+                <a href="/products.html?category=laptop-case" class="category-card">
+                    <div class="category-icon">LAPTOP</div>
+                    <p>Keep your laptop safe</p>
+                </a>
+
+                <a href="/products.html?category=tablet-case" class="category-card">
+                    <div class="category-icon">TABLET</div>
+                    <p>Cover your tablet</p>
+                </a>
+
+                <a href="/products.html?category=watch-case" class="category-card">
+                    <div class="category-icon">WATCH</div>
+                    <p>Style your smartwatch</p>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Top Rated Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Top Rated Products</h2>
+                <p>Loved by our customers</p>
+            </div>
+
+            <div id="top-rated-products" class="product-grid">
+                <!-- Top rated products will be loaded here -->
+                <div class="loading">Loading top rated products...</div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - Cases Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Cases Store</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/products.html" class="active">Products</a></li>
+                <li><a href="/cart.html">Cart <span id="cart-count" class="badge">0</span></a></li>
+                <li><a href="/dashboard.html" id="dashboard-link" style="display: none;">Dashboard</a></li>
+                <li><a href="/admin.html" id="admin-link" style="display: none;">Admin</a></li>
+                <li id="user-name-display" style="display: none; color: var(--dark-color); font-weight: 700; font-size: 1.1em;"></li>
+                <li><a href="/login.html" id="auth-link">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Products Section -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2>All Products</h2>
+            </div>
+
+            <!-- Filters -->
+            <div class="filters">
+                <div class="filter-group">
+                    <label for="category">Category:</label>
+                    <select id="category" class="filter-select">
+                        <option value="">All Categories</option>
+                        <option value="phone-case">Phone Cases</option>
+                        <option value="laptop-case">Laptop Cases</option>
+                        <option value="tablet-case">Tablet Cases</option>
+                        <option value="watch-case">Watch Bands</option>
+                        <option value="accessory">Accessories</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="sort">Sort By:</label>
+                    <select id="sort" class="filter-select">
+                        <option value="-createdAt">Newest</option>
+                        <option value="price">Price: Low to High</option>
+                        <option value="-price">Price: High to Low</option>
+                        <option value="-rating.average">Top Rated</option>
+                        <option value="-soldCount">Best Selling</option>
+                    </select>
+                </div>
+
+                <div class="filter-group">
+                    <label for="search">Search:</label>
+                    <input type="text" id="search" class="filter-input" placeholder="Search products...">
+                </div>
+            </div>
+
+            <!-- Products Grid -->
+            <div id="products-container" class="product-grid">
+                <div class="loading">Loading products...</div>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="pagination"></div>
+        </div>
+    </section>
+
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/products.js"></script>
+</body>
+</html>

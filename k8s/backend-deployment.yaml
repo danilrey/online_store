@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cases-store-backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: cases-store-backend
+  template:
+    metadata:
+      labels:
+        app: cases-store-backend
+    spec:
+      containers:
+        - name: backend
+          image: cases-store-backend:local
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 3000
+          envFrom:
+            - configMapRef:
+                name: cases-store-backend-config
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          readinessProbe:
+            httpGet:
+              path: /metrics
+              port: 3000
+            initialDelaySeconds: 20
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /metrics
+              port: 3000
+            initialDelaySeconds: 30
+            periodSeconds: 20
+

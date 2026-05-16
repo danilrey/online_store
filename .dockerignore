@@ -1,0 +1,14 @@
+node_modules
+.git
+.github
+.idea
+.env
+terraform
+loadtest/__pycache__
+**/__pycache__
+*.pyc
+*.pyo
+*.pyd
+terraform.tfstate
+terraform.tfstate.backup
+

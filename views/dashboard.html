@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Cases Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Cases Store</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/products.html">Products</a></li>
+                <li><a href="/cart.html">Cart <span id="cart-count" class="badge">0</span></a></li>
+                <li><a href="/dashboard.html" id="dashboard-link" class="active">Dashboard</a></li>
+                <li><a href="/admin.html" id="admin-link" style="display: none;">Admin</a></li>
+                <li id="user-name-display" style="display: none; color: var(--dark-color); font-weight: 700; font-size: 1.1em;"></li>
+                <li><a href="#" id="logout-link">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Dashboard Section -->
+    <section class="section">
+        <div class="container">
+            <h2>My Dashboard</h2>
+
+            <!-- User Info -->
+            <div id="user-info" class="card">
+                <h3>Profile Information</h3>
+                <div id="user-details"></div>
+            </div>
+
+            <!-- Addresses -->
+            <div class="card">
+                <h3>Shipping Addresses</h3>
+                <div id="address-list" class="address-list"></div>
+                <form id="address-form" class="address-form">
+                    <input type="hidden" id="address-id">
+                    <div class="form-group">
+                        <label for="address-street">Street *</label>
+                        <input type="text" id="address-street" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address-city">City *</label>
+                        <input type="text" id="address-city" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address-country">Country *</label>
+                        <input type="text" id="address-country" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address-phone">Phone *</label>
+                        <input type="text" id="address-phone" required>
+                    </div>
+                    <div class="form-group checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="address-default">
+                            <span>Set as default</span>
+                        </label>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary" id="address-submit">Add Address</button>
+                        <button type="button" class="btn btn-danger" id="address-cancel" style="display: none;">Cancel</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Orders -->
+            <div class="card">
+                <h3>My Orders</h3>
+                <div class="filters" style="margin-bottom: 20px;">
+                    <select id="order-status-filter" class="filter-select">
+                        <option value="">All Orders</option>
+                        <option value="pending">Pending</option>
+                        <option value="processing">Processing</option>
+                        <option value="shipped">Shipped</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="cancelled">Cancelled</option>
+                    </select>
+                </div>
+                <div id="orders-container">
+                    <div class="loading">Loading orders...</div>
+                </div>
+            </div>
+
+            <!-- Analytics -->
+            <div class="card" id="analytics-section">
+                <h3>Analytics</h3>
+                <div id="analytics-content">
+                    <div class="loading">Loading analytics...</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/dashboard.js"></script>
+</body>
+</html>

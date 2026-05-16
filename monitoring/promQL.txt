@@ -1,0 +1,20 @@
+1) Golden Signal: Latency (p95)
+histogram_quantile(0.95, sum(rate(http_request_duration_seconds_bucket{job="backend"}[5m])) by (le))
+
+2) Golden Signal: Traffic (RPS)
+sum(rate(http_requests_total{job="backend"}[5m]))
+
+3) Golden Signal: Errors (% 4xx+5xx)
+100 * sum(rate(http_requests_total{job="backend",status_code=~"4..|5.."}[5m]))
+/ clamp_min(sum(rate(http_requests_total{job="backend"}[5m])), 0.001)
+
+4) Golden Signal: Saturation (host CPU from node-exporter)
+100 - (avg by(instance) (rate(node_cpu_seconds_total{job="node-exporter",mode="idle"}[5m])) * 100)
+
+5) SLO #1 compliance: Product catalog availability (%), target 99.5
+100 * sum(increase(http_requests_total{job="backend",method="GET",route="/api/products",status_code=~"2..|3.."}[24h]))
+/ clamp_min(sum(increase(http_requests_total{job="backend",method="GET",route="/api/products"}[24h])), 1)
+
+6) SLO #2 compliance: Order creation success (%), target 99.0
+100 * sum(increase(http_requests_total{job="backend",method="POST",route="/api/orders",status_code=~"2..|3.."}[24h]))
+/ clamp_min(sum(increase(http_requests_total{job="backend",method="POST",route="/api/orders"}[24h])), 1)

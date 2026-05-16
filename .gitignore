@@ -1,0 +1,9 @@
+node_modules/
+.env
+.idea/
+loadtest/__pycache__/
+*.pyc
+terraform/.terraform/
+terraform/terraform.tfstate
+terraform/terraform.tfstate.backup
+

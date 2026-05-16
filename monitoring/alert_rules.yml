@@ -1,0 +1,57 @@
+groups:
+  - name: prr-alerts
+    rules:
+      - alert: ProductCatalogAvailabilityWarning
+        expr: |
+          (
+            100 * sum(increase(http_requests_total{job="backend",method="GET",route="/api/products",status_code=~"2..|3.."}[10m]))
+            / clamp_min(sum(increase(http_requests_total{job="backend",method="GET",route="/api/products"}[10m])), 1)
+          ) < 99.5
+          and
+          sum(increase(http_requests_total{job="backend",method="GET",route="/api/products"}[10m])) >= 20
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Product catalog availability below SLO"
+          description: "GET /api/products availability is below 99.5% over 10 minutes."
+
+      - alert: OrderCreationSuccessWarning
+        expr: |
+          (
+            100 * sum(increase(http_requests_total{job="backend",method="POST",route="/api/orders",status_code=~"2..|3.."}[10m]))
+            / clamp_min(sum(increase(http_requests_total{job="backend",method="POST",route="/api/orders"}[10m])), 1)
+          ) < 99.0
+          and
+          sum(increase(http_requests_total{job="backend",method="POST",route="/api/orders"}[10m])) >= 10
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Order creation success rate below SLO"
+          description: "POST /api/orders success rate is below 99.0% over 10 minutes."
+
+      - alert: BackendLatencyHigh
+        expr: |
+          histogram_quantile(
+            0.95,
+            sum(rate(http_request_duration_seconds_bucket{job="backend"}[5m])) by (le, route)
+          ) > 0.75
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Backend p95 latency is high"
+          description: "p95 latency has exceeded 750 ms for 5 minutes."
+
+      - alert: BackendErrorRateHigh
+        expr: |
+          100 * sum(rate(http_requests_total{job="backend",status_code=~"4..|5.."}[5m]))
+          / clamp_min(sum(rate(http_requests_total{job="backend"}[5m])), 0.001) > 5
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Backend error rate is high"
+          description: "4xx/5xx response ratio is above 5% over 5 minutes."
+

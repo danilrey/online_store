@@ -1,0 +1,5 @@
+project_name          = "cases-store-prr"
+backend_image_tag      = "terraform"
+grafana_admin_user     = "admin"
+grafana_admin_password = "admin"
+

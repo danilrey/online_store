@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Cases Store</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Cases Store</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="/">Home</a></li>
+                <li><a href="/products.html">Products</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Auth Section -->
+    <section class="section">
+        <div class="container">
+            <div class="auth-container">
+                <!-- Login Form -->
+                <div id="login-form" class="auth-form">
+                    <h2>Login</h2>
+                    <form id="login-form-element" novalidate>
+                        <div class="form-group">
+                            <label for="login-email">Email *</label>
+                            <input
+                                type="email"
+                                id="login-email"
+                                required
+                                placeholder="example@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password *</label>
+                            <input
+                                type="password"
+                                id="login-password"
+                                required
+                                placeholder="Enter your password">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Login</button>
+                    </form>
+                    <p class="auth-switch">
+                        Don't have an account?
+                        <a href="#" onclick="showRegister(); return false;">Register</a>
+                    </p>
+                </div>
+
+                <!-- Register Form -->
+                <div id="register-form" class="auth-form" style="display: none;">
+                    <h2>Register</h2>
+                    <form id="register-form-element" novalidate>
+                        <div class="form-group">
+                            <label for="register-name">Name *</label>
+                            <input
+                                type="text"
+                                id="register-name"
+                                required
+                                minlength="2"
+                                placeholder="Enter your full name">
+                            <small class="form-text">Minimum 2 characters</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-email">Email *</label>
+                            <input
+                                type="email"
+                                id="register-email"
+                                required
+                                placeholder="example@email.com">
+                            <small class="form-text">Must be a valid email address</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-password">Password *</label>
+                            <input
+                                type="password"
+                                id="register-password"
+                                required
+                                minlength="4"
+                                placeholder="Minimum 4 characters">
+                            <small class="form-text">At least 4 characters</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="register-phone">Phone (optional)</label>
+                            <input
+                                type="tel"
+                                id="register-phone"
+                                placeholder="+1234567890">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Register</button>
+                    </form>
+                    <p class="auth-switch">
+                        Already have an account?
+                        <a href="#" onclick="showLogin(); return false;">Login</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/auth.js"></script>
+    <script src="/js/utils.js"></script>
+    <script src="/js/login.js"></script>
+</body>
+</html>
